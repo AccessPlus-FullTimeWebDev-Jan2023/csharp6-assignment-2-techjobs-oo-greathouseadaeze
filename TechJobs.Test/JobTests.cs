@@ -35,6 +35,30 @@ namespace TechJobs.Tests
         {
             Assert.IsFalse(job3.Equals(job4));
         }
+
+        [TestMethod]
+        public void TestToStringStartsAndEndsWithNewLine()
+        {
+            Assert.IsTrue(job3.ToString().StartsWith(Environment.NewLine));
+            Assert.IsTrue(job3.ToString().EndsWith(Environment.NewLine));
+        }
+
+        [TestMethod]
+        public void TestToStringContainsCorrectLabelsAndData()
+        {
+            string expected = Environment.NewLine + $"ID: {job3.Id}" + Environment.NewLine + $"Name: {job3.Name}" + Environment.NewLine + $"Employer: {job3.EmployerName.ToString()}" + Environment.NewLine + $"Location: {job3.EmployerLocation.ToString()}" + Environment.NewLine + $"Position Type: {job3.JobType.ToString()}" + Environment.NewLine + $"Core Competency: {job3.JobCoreCompetency.ToString()}" + Environment.NewLine;
+            string actual = job3.ToString();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestToStringHandlesEmptyField()
+        {
+            job3.Name = "";
+            string expected = Environment.NewLine + $"ID: {job3.Id}" + Environment.NewLine + $"Name: Data not available" + Environment.NewLine + $"Employer: {job3.EmployerName.ToString()}" + Environment.NewLine + $"Location: {job3.EmployerLocation.ToString()}" + Environment.NewLine + $"Position Type: {job3.JobType.ToString()}" + Environment.NewLine + $"Core Competency: {job3.JobCoreCompetency.ToString()}" + Environment.NewLine;
+            string actual = job3.ToString();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
 

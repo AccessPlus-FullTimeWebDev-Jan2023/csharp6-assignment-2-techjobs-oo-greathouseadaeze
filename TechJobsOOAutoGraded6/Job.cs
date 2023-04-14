@@ -39,6 +39,37 @@ namespace TechJobsOOAutoGraded6
             return HashCode.Combine(Id);
         }
 
+        public override string? ToString()
+        {
+            if (Name == "" || Name == null)
+            {
+                Name = "Data not available";
+            }
+
+            if (EmployerName.Value == "" || EmployerName.Value == null)
+            {
+                EmployerName.Value = "Data not available";
+            }
+
+            if (EmployerLocation.Value == "" || EmployerLocation.Value == null)
+            {
+                EmployerLocation.Value = "Data not available";
+            }
+
+            if (JobType.Value == "" || JobType.Value == null)
+            {
+                JobType.Value = "Data not available";
+            }
+
+            if (JobCoreCompetency.Value == "" || JobCoreCompetency.Value == null)
+            {
+                JobCoreCompetency.Value = "Data not available";
+            }
+            
+                return Environment.NewLine + $"ID: {Id}" + Environment.NewLine + $"Name: {Name}" + Environment.NewLine + $"Employer: {EmployerName.ToString()}" + Environment.NewLine + $"Location: {EmployerLocation.ToString()}" + Environment.NewLine + $"Position Type: {JobType.ToString()}" + Environment.NewLine + $"Core Competency: {JobCoreCompetency.ToString()}" + Environment.NewLine;
+            
+        }
+
         // TODO: Task 3: Add the two necessary constructors.
 
         // TODO: Task 3: Generate Equals() and GetHashCode() methods.  
